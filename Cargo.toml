@@ -1,0 +1,10 @@
+[package]
+name = "robo1_main"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+motor_controller = { git = "https://github.com/nityc-d-robo/motor_controller", rev="ce467588a86a9971a9c5e9354e373206d4cbd4ad" }
+serde_json = "1.0.55"
+serde = { version = "1.0.100", features = [ "derive" ] }
+rppal = "0.19.0"
