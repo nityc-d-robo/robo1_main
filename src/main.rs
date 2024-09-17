@@ -32,17 +32,18 @@ fn main() {
         if limit_switch_pin[0].is_low() {
             // スイッチが押されているか確認
             *motors[0].lock().unwrap() = 0.;
-            sleep(Duration::from_millis(100));
-            *motors[0].lock().unwrap() = 0.4;
+            sleep(Duration::from_millis(10));
+            *motors[0].lock().unwrap() = 1.;
             state = 1;
             state1 = 0;
+            println!("0")
         }
 
         if limit_switch_pin[1].is_low() {
             state1 = 1;
-            println!("{} {}", state1, state);
         }
         if limit_switch_pin[1].is_high() && state1 >= 1 && state >= 1 {
+            println!("{} {}", state1, state);
             *motors[0].lock().unwrap() = 0.;
 
             state1 = 0;
