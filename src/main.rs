@@ -16,7 +16,7 @@ fn main() {
         PwmDir::new(25, 32, START_DUTY_CYCLE, FREQUENCY),
         PwmDir::new(16, 26, START_DUTY_CYCLE, FREQUENCY),
         PwmDir::new(13, 2, START_DUTY_CYCLE, FREQUENCY),
-        PwmDir::new(3, 4, START_DUTY_CYCLE, FREQUENCY), // 6
+        PwmDir::new(10, 9, START_DUTY_CYCLE, FREQUENCY), // 6
     ];
 
     let motors = setup_motors(pwm_dir_motors);
@@ -28,8 +28,8 @@ fn main() {
 
     let gpio = Gpio::new().unwrap();
     let limit_switch_pin = [
+        gpio.get(4).unwrap().into_input_pullup(),
         gpio.get(8).unwrap().into_input_pullup(),
-        gpio.get(9).unwrap().into_input_pullup(),
     ];
 
     let mut state = 0;
@@ -61,3 +61,4 @@ fn main() {
         sleep(Duration::from_millis(1));
     }
 }
+
